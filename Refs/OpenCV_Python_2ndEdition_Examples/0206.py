@@ -14,10 +14,14 @@ imgRGB3 = cv2.cvtColor(imgBGR3, cv2.COLOR_BGR2RGB)
 imgRGB4 = cv2.cvtColor(imgBGR4, cv2.COLOR_BGR2RGB)
 
 fig, ax = plt.subplots(2, 2, figsize=(10,10), sharey=True)
+#2x2 서브플롯을 figsize(10,10)크기로 ax에 생성한다
+#sharey=True -> Ytick의 값을 각각 공유한다
 fig.canvas.manager.set_window_title('Sample Pictures')
+#Figure 객체 fig를 이용하여 윈도우 타이틀을 'Sample Pictures'로 변경
 
-ax[0][0].axis('off')
+ax[0][0].axis('off') 
 ax[0][0].imshow(imgRGB1, aspect = 'auto')
+#각 파일에서 axis 키나 안키나 확인
 
 ax[0][1].axis('off')
 ax[0][1].imshow(imgRGB2, aspect = 'auto')

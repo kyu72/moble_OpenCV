@@ -3,10 +3,16 @@ import numpy as np
 import cv2
 
 img = np.zeros(shape=(512,512,3), dtype=np.uint8) + 255
+
 text = 'OpenCV Programming'
 org = (50,100)
 font = cv2.FONT_HERSHEY_SIMPLEX
 cv2.putText(img,text, org, font, 1, (255,0,0), 2)
+
+# text = 'Hello YunGi q(^  o__o  ^)p'
+#     org = (200,50)
+#     font = cv2.FONT_HERSHEY_SIMPLEX
+#     cv2.putText(frame,text, org, font, 1, (255,0,255), 2)
 
 size, baseLine = cv2.getTextSize(text, font, 1, 2)
 #print('size=', size)

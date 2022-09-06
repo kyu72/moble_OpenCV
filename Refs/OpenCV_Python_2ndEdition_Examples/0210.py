@@ -1,16 +1,22 @@
 # 0210.py
 import cv2
 
-cap = cv2.VideoCapture(0) # 0번 카메라
+#cap = cv2.VideoCapture(0) # 0번 카메라
+cap = cv2.VideoCapture('./data/vtest.avi')
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
 frame_size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),
               int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+#가로세로 크기
 print('frame_size =', frame_size)
 
 #fourcc = cv2.VideoWriter_fourcc(*'DIVX')  # ('D', 'I', 'V', 'X')
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
 out1 = cv2.VideoWriter('./data/record0.mp4',fourcc, 20.0, frame_size)
-out2 = cv2.VideoWriter('./data/record1.mp4',fourcc, 20.0, frame_size,isColor=False)
+out2 = cv2.VideoWriter('./data/record1.mp4',fourcc, 20.0, frame_size,
+                       isColor=False) #흑백
+#프레임속도 = 20
 
 while True:
     retval, frame = cap.read()
@@ -18,12 +24,12 @@ while True:
         break   
     out1.write(frame)
     
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #흑백으로 변환
     out2.write(gray)        
     cv2.imshow('frame',frame)
     cv2.imshow('gray',gray)      
     
-    key = cv2.waitKey(25)
+    key = cv2.waitKey(100)
     if key == 27:
         break
 cap.release()
