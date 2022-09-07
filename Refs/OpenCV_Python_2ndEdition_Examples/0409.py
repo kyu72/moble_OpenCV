@@ -2,8 +2,8 @@
 import cv2
 src = cv2.imread('./data/lena.jpg', cv2.IMREAD_GRAYSCALE)
 
-##dst = src          
-dst = src.copy()
+#dst = src      # 참조 (얉은 복사)        
+dst = src.copy() # 복사 (깊은 복사)
 dst[100:400, 200:300] = 0
 
 cv2.imshow('src', src)

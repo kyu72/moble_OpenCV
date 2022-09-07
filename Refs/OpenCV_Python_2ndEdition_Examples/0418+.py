@@ -14,16 +14,16 @@ roi = src1[0:rows, 0:cols]
 gray = cv2.cvtColor(src2,cv2.COLOR_BGR2GRAY)
 ret, mask = cv2.threshold(gray, 160, 255, cv2.THRESH_BINARY)
 mask_inv = cv2.bitwise_not(mask)
-cv2.imshow('mask',  mask)
-cv2.imshow('mask_inv',  mask_inv)
+cv2.imshow('#2-1',  mask)
+cv2.imshow('#2-2',  mask_inv)
 
 #3
 src1_bg = cv2.bitwise_and(roi, roi, mask = mask)
-cv2.imshow('src1_bg',  src1_bg)
+cv2.imshow('#3',  src1_bg)
 
 #4
 src2_fg = cv2.bitwise_and(src2, src2, mask = mask_inv)
-cv2.imshow('src2_fg',  src2_fg)
+cv2.imshow('#4',  src2_fg)
 
 #5
 ##dst = cv2.add(src1_bg, src2_fg)
